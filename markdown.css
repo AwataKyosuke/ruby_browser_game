@@ -1,0 +1,33 @@
+body {
+  font-family: "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+  font-size: 10px;
+  padding: 0 7px;
+  line-height: 12px;
+  word-wrap: break-word;
+}
+
+code {
+  font-family: "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+  font-size: 10px;
+  padding: 0 7px;
+  line-height: 12px;
+  word-wrap: break-word;
+}
+
+pre.hljs code > div {
+  padding: 2px;
+}
+
+h1 {
+  padding-top: 5px;
+  font-weight: bold;
+  text-align: center;
+  border-bottom: none;
+}
+
+h2 {
+  padding-bottom: 0.3em;
+  line-height: 1.2;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}

@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>mashimashiawata.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+	font-size: 14px;
+	padding: 0 12px;
+	line-height: 22px;
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	color: #4080D0;
+	text-decoration: none;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+h1 code,
+h2 code,
+h3 code,
+h4 code,
+h5 code,
+h6 code {
+	font-size: inherit;
+	line-height: auto;
+}
+
+a:hover {
+	color: #4080D0;
+	text-decoration: underline;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left: 5px solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 14px;
+	line-height: 19px;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+.mac code {
+	font-size: 12px;
+	line-height: 18px;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+/** Theming */
+
+.vscode-light,
+.vscode-light pre code {
+	color: rgb(30, 30, 30);
+}
+
+.vscode-dark,
+.vscode-dark pre code {
+	color: #DDD;
+}
+
+.vscode-high-contrast,
+.vscode-high-contrast pre code {
+	color: white;
+}
+
+.vscode-light code {
+	color: #A31515;
+}
+
+.vscode-dark code {
+	color: #D7BA7D;
+}
+
+.vscode-light pre:not(.hljs),
+.vscode-light code > div {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre:not(.hljs),
+.vscode-dark code > div {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre:not(.hljs),
+.vscode-high-contrast code > div {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+.vscode-light blockquote,
+.vscode-dark blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.vscode-high-contrast blockquote {
+	background: transparent;
+	border-color: #fff;
+}
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family:  "Meiryo", "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+<link rel="stylesheet" href="file:///Users/kyosuke/Desktop/works/mashimashiawata/markdown.css" type="text/css">
+</head>
+<body>
+<h1 id="ruby%E3%81%A7%E4%BD%9C%E3%82%8B%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6%E3%82%B2%E3%83%BC%E3%83%A0">Rubyで作るブラウザゲーム</h1>
+<h2 id="1-%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB">1. はじめに</h2>
+<p>今回はRubyでブラウザゲームを作ります。ゲームの内容は、上からうどん・そば・ラーメンが落ちてくるので、その中からひたすらラーメンだけを食べ続けるというものです。ラーメン以外を食べた時点でゲームオーバーとなります。次にRubyを選定した理由ですが、ただ単に私がRubyでゲームを作ってみたかったからです。また、最近、未経験からエンジニアを目指す人が最初に学ぶ言語としてRubyが人気だと感じているので、需要もあるのではと思いました。最後に、本書の難易度は低いと思いますので、私のような駆け出しエンジニアの人にこそぜひ手にとってもらいたいと思っています。<br></p>
+<h2 id="2-%E7%92%B0%E5%A2%83%E6%A7%8B%E7%AF%89">2. 環境構築</h2>
+<h3 id="21-ruby%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">2.1 Rubyのインストール</h3>
+<p>今回のゲームはRubyで作成するため、ネットの記事を参考にRubyをインストールしてください。<br></p>
+<h3 id="22-dxopal%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">2.2 DxOpalのインストール</h3>
+<p>次に、今回利用するライブラリをインストールしましょう。Rubyのインストールが完了している状況で、ターミナルで以下のコマンドを実行してください。<br></p>
+<pre class="hljs"><code><div>$ gem install dxopal
+</div></code></pre>
+<h3 id="23-%E4%BD%9C%E6%A5%AD%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E3%81%AE%E4%BD%9C%E6%88%90">2.3 作業ディレクトリの作成</h3>
+<p>以下のコマンドで作業ディレクトリを作成し、作業ディレクトリに移動しましょう。<br></p>
+<pre class="hljs"><code><div>$ mkdir ruby_game
+$ cd ruby_game
+</div></code></pre>
+<h3 id="24-%E5%BF%85%E8%A6%81%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89">2.4 必要ファイルのダウンロード</h3>
+<p>今回のゲームに必要な画像ファイルと音声ファイルを<a href="http://www.00000000000.co.jp/sdafa">http://www.00000000000.co.jp/sdafa</a>からダウンロードしておいてください。また、完成形のソースコードもこちらに入れておりますので、必要な方はご確認ください。<br></p>
+<h2 id="3-%E5%AE%9F%E8%A3%85">3.  実装</h2>
+<p>まずは、雛形を作成しブラウザ上で動作することを確認しましょう。<br></p>
+<h3 id="31-%E9%9B%9B%E5%BD%A2%E3%81%AE%E4%BD%9C%E6%88%90">3.1 雛形の作成</h3>
+<p>初めに以下のコマンドを作業ディレクトリで実行し、雛形を作成します。<br></p>
+<pre class="hljs"><code><div>$ dxopal init
+</div></code></pre>
+<p>上記のコマンドにより以下のファイルが生成されます。<br></p>
+<ul>
+<li>dxopal.min.js<br></li>
+<li>index.html<br></li>
+<li>main.rb<br></li>
+</ul>
+<p>次に以下のコマンドでサーバーを起動しましょう。<br></p>
+<pre class="hljs"><code><div>$ dxopal server
+</div></code></pre>
+<p>最後にブラウザで以下にアクセスし動作を確認してください。<br></p>
+<pre class="hljs"><code><div><span class="hljs-symbol">localhost:</span><span class="hljs-number">7521</span>/index.html
+</div></code></pre>
+<p>真っ黒の画面の橋に「Hello!」と表示されていれば成功です。<br>
+最後に先ほどダウンロードしたフォルダ内の <code>images/</code> と <code>sounds/</code> を作業ディレクトリにコピーしておいてください。<br></p>
+<h3 id="32-%E3%82%BF%E3%82%A4%E3%83%88%E3%83%AB%E7%94%BB%E9%9D%A2%E3%81%AE%E4%BD%9C%E6%88%90">3.2 タイトル画面の作成</h3>
+<p>それでは、タイトル画面の作成に移ります。背景画像とのれんの画像と文字列を描写します。main.rbを以下のように変更します。</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># 画像の登録</span>
+Image.register(<span class="hljs-symbol">:bg</span>, <span class="hljs-string">'images/background_image.png'</span>)
+Image.register(<span class="hljs-symbol">:title</span>, <span class="hljs-string">'images/title.png'</span>)
+
+<span class="hljs-comment"># 画面サイズの設定</span>
+Window.width = <span class="hljs-number">1060</span>
+Window.height = <span class="hljs-number">800</span>
+
+Window.load_resources <span class="hljs-keyword">do</span>
+  Window.loop <span class="hljs-keyword">do</span>
+    <span class="hljs-comment"># 画像と文字列の描写</span>
+    Window.draw(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>, Image[<span class="hljs-symbol">:bg</span>])
+    Window.draw(<span class="hljs-number">65</span>, <span class="hljs-number">70</span>, Image[<span class="hljs-symbol">:title</span>])
+    Window.draw_font((Window.height / <span class="hljs-number">2</span>) + <span class="hljs-number">60</span>, Window.width / <span class="hljs-number">2</span>, <span class="hljs-string">"PRESS SPACE"</span>, Font.default)
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</div></code></pre>
+<p>ここまで終わった時点で画面は以下のようになっていれば大丈夫です。
+<img src="/Users/kyosuke/Desktop/pictures/03_title.png" alt="init.png"></p>
+<h3 id="33-%E3%82%B7%E3%83%BC%E3%83%B3%E5%88%86%E3%81%91%E3%81%AE%E8%A8%AD%E5%AE%9A">3.3 シーン分けの設定</h3>
+<p>次にゲームのシーンを設定します。今回は「タイトル」「プレイ中」「ゲームオーバー」と3種類のシーンを設定することにしましょう。また「タイトル」から「プレイ中」と「ゲームオーバー」から「プレイ中」へはスペースキーを押すことでシーン移動ができるよう設定します。main.rbを以下のように変更します。</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">require</span> <span class="hljs-string">'dxopal'</span>
+<span class="hljs-keyword">include</span> DXOpal
+
+〜省略〜
+
+<span class="hljs-comment"># ゲームの情報を保時</span>
+GAME_INFO = {
+  <span class="hljs-symbol">scene:</span> <span class="hljs-symbol">:title</span>
+}
+
+Window.load_resources <span class="hljs-keyword">do</span>
+  Window.loop <span class="hljs-keyword">do</span>
+    Window.draw(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>, Image[<span class="hljs-symbol">:bg</span>])  <span class="hljs-comment"># 背景画像は常に描写</span>
+
+    <span class="hljs-keyword">case</span> GAME_INFO[<span class="hljs-symbol">:scene</span>]
+    <span class="hljs-keyword">when</span> <span class="hljs-symbol">:title</span>
+      <span class="hljs-comment"># 画像と文字列の描写</span>
+      Window.draw(<span class="hljs-number">65</span>, <span class="hljs-number">70</span>, Image[<span class="hljs-symbol">:title</span>])
+      Window.draw_font((Window.height / <span class="hljs-number">2</span>) + <span class="hljs-number">60</span>, Window.width / <span class="hljs-number">2</span>, <span class="hljs-string">"PRESS SPACE"</span>, Font.default)
+
+      <span class="hljs-comment"># スペースキーが押されたらシーンを変える</span>
+      <span class="hljs-keyword">if</span> Input.key_push?(K_SPACE)
+        GAME_INFO[<span class="hljs-symbol">:scene</span>] = <span class="hljs-symbol">:playing</span>
+      <span class="hljs-keyword">end</span>
+
+    <span class="hljs-keyword">when</span> <span class="hljs-symbol">:playing</span>
+
+    <span class="hljs-keyword">when</span> <span class="hljs-symbol">:game_over</span>
+      <span class="hljs-comment"># スペースキーが押されたらシーンを変える</span>
+      <span class="hljs-keyword">if</span> Input.key_push?(K_SPACE)
+        GAME_INFO[<span class="hljs-symbol">:scene</span>] = <span class="hljs-symbol">:playing</span>
+      <span class="hljs-keyword">end</span>
+    <span class="hljs-keyword">end</span>
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</div></code></pre>
+<h3 id="34-%E3%82%A2%E3%82%A4%E3%83%86%E3%83%A0%E3%81%AE%E8%A1%A8%E7%A4%BA">3.4 アイテムの表示</h3>
+<p>続いて、プレイ中に上から落下してくるアイテムを表示します。まずはこれまでと同様に画像の登録を行います。以下のコードを追記してください。</p>
+<pre class="hljs"><code><div>Image.register(<span class="hljs-symbol">:ramen</span>, <span class="hljs-string">'images/ra-men.png'</span>)
+Image.register(<span class="hljs-symbol">:udon</span>, <span class="hljs-string">'images/udon.png'</span>)
+Image.register(<span class="hljs-symbol">:soba</span>, <span class="hljs-string">'images/soba.png'</span>)
+</div></code></pre>
+<p>次にアイテムを表示させるためのクラスを作成します。DxRubyにはSpriteクラスが用意されているため、こちらを継承しておくことで後ほど当たり判定などが簡単に実装できるようになります。<br>
+では早速Itemクラスを作成しましょう。</p>
+<pre class="hljs"><code><div><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Item</span> &lt; Sprite</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">initialize</span><span class="hljs-params">(image)</span></span>                   <span class="hljs-comment"># 画像を引数に取る</span>
+    x = rand(Window.width - image.width)  <span class="hljs-comment"># x座標はランダムに設定される</span>
+    y = <span class="hljs-number">0</span>
+    <span class="hljs-keyword">super</span>(x, y, image)
+    @speed_y = rand(<span class="hljs-number">5</span>) + <span class="hljs-number">10</span>               <span class="hljs-comment"># 落ちる速度をランダムで決める</span>
+  <span class="hljs-keyword">end</span>
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">update</span></span>
+    <span class="hljs-keyword">self</span>.y += @speed_y                    <span class="hljs-comment"># 落下速度の設定</span>
+    <span class="hljs-keyword">if</span> <span class="hljs-keyword">self</span>.y &gt; Window.height             <span class="hljs-comment"># 画面外に出たら</span>
+      <span class="hljs-keyword">self</span>.vanish
+    <span class="hljs-keyword">end</span>
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</div></code></pre>
+<p>アイテムを表すItemクラスを作成したら、Itemクラスを継承した各アイテムクラスを作成します。具体的には「ラーメン」「うどん」「そば」が各アイテムになります。</p>
+<pre class="hljs"><code><div><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Ramen</span> &lt; Item</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">initialize</span></span>
+    <span class="hljs-keyword">super</span>(Image[<span class="hljs-symbol">:ramen</span>])
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</div></code></pre>
+<pre class="hljs"><code><div><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Soba</span> &lt; Item</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">initialize</span></span>
+    <span class="hljs-keyword">super</span>(Image[<span class="hljs-symbol">:soba</span>])
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</div></code></pre>
+<pre class="hljs"><code><div><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Udon</span> &lt; Item</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">initialize</span></span>
+    <span class="hljs-keyword">super</span>(Image[<span class="hljs-symbol">:udon</span>])
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</div></code></pre>
+<p>最後に、これらのアイテムを管理するためのItemsクラスを作成します。</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># アイテムを管理するクラス</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Items</span></span>
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">initialize</span></span>
+    @items = []
+    @item_count = <span class="hljs-number">10</span>
+  <span class="hljs-keyword">end</span>
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">update</span></span>
+    @items.each { <span class="hljs-params">|item|</span> item.update }  <span class="hljs-comment"># 各スプライトのupdateメソッドを呼ぶ</span>
+    Sprite.clean(@items)　　             <span class="hljs-comment"># vanishしたスプライトを配列から取り除く</span>
+
+    (item_count - @items.size).times <span class="hljs-keyword">do</span>  <span class="hljs-comment"># 自動的にアイテム数を増やす</span>
+      i = rand(<span class="hljs-number">1</span>..<span class="hljs-number">100</span>)
+      <span class="hljs-comment"># ランダムでアイテムが追加される</span>
+      <span class="hljs-keyword">if</span> i &lt; <span class="hljs-number">34</span>
+        @items.push(Ramen.new)
+      <span class="hljs-keyword">elsif</span> i &gt; <span class="hljs-number">34</span> &amp;&amp; i &lt; <span class="hljs-number">67</span>
+        @items.push(Udon.new)
+      <span class="hljs-keyword">else</span>
+        @items.push(Soba.new)
+      <span class="hljs-keyword">end</span>
+    <span class="hljs-keyword">end</span>
+  <span class="hljs-keyword">end</span>
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">draw</span></span>
+    Sprite.draw(@items)   <span class="hljs-comment"># 各スプライトのdrawメソッドを呼ぶ</span>
+  <span class="hljs-keyword">end</span>
+
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">item_count</span></span>
+    @item_count += <span class="hljs-number">0</span>.<span class="hljs-number">005</span>
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</div></code></pre>
+<p>main.rbは以下のようになります。</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">require</span> <span class="hljs-string">'dxopal'</span>
+<span class="hljs-keyword">include</span> DXOpal
+
+<span class="hljs-comment"># 画像の登録</span>
+〜省略〜
+
+<span class="hljs-comment"># 画面サイズの設定</span>
+〜省略〜
+
+<span class="hljs-comment"># ゲームの情報を保時</span>
+〜省略〜
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Item</span> &lt; Sprite</span>
+〜省略〜
+<span class="hljs-keyword">end</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Ramen</span> &lt; Item</span>
+〜省略〜
+<span class="hljs-keyword">end</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Soba</span> &lt; Item</span>
+〜省略〜
+<span class="hljs-keyword">end</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Udon</span> &lt; Item</span>
+〜省略〜
+<span class="hljs-keyword">end</span>
+
+<span class="hljs-comment"># アイテムを管理するクラス</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Items</span></span>
+〜省略〜
+<span class="hljs-keyword">end</span>
+
+Window.load_resources <span class="hljs-keyword">do</span>
+
+  @items = Items.new
+
+  Window.loop <span class="hljs-keyword">do</span>
+
+    〜省略〜
+
+    <span class="hljs-keyword">when</span> <span class="hljs-symbol">:playing</span>
+      @items.update
+      @items.draw
+
+    〜省略〜
+
+    <span class="hljs-keyword">end</span>
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</div></code></pre>
+<h3 id="35-%E3%83%97%E3%83%AC%E3%82%A4%E3%83%A4%E3%83%BC%E3%81%AE%E8%A1%A8%E7%A4%BA">3.5 プレイヤーの表示</h3>
+<p>続いて、アイテムをゲットするプレイヤーを表示させます。まずは画像を登録しましょう。</p>
+<pre class="hljs"><code><div>Image.register(<span class="hljs-symbol">:player</span>, <span class="hljs-string">'images/player.png'</span>)
+</div></code></pre>
+<p>画像の登録が完了したらPlayerクラスを作成します。PlayerクラスはItemsクラスの下に追記してください。</p>
+<pre class="hljs"><code><div><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Player</span> &lt; Sprite</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">initialize</span></span>
+    x = Window.width / <span class="hljs-number">2</span>      <span class="hljs-comment"># X座標の設定</span>
+    y = Window.height - <span class="hljs-number">100</span>   <span class="hljs-comment"># Y座標の設定</span>
+    image = Image[<span class="hljs-symbol">:player</span>]    <span class="hljs-comment"># 画像の設定</span>
+    <span class="hljs-keyword">super</span>(x, y, image)
+  <span class="hljs-keyword">end</span>
+
+  <span class="hljs-comment"># キーボードでプレイヤーを移動。画面外に移動しないよう条件を追加。</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">update</span></span>
+    <span class="hljs-keyword">if</span> Input.key_down?(K_LEFT) &amp;&amp; <span class="hljs-keyword">self</span>.x &gt; <span class="hljs-number">0</span>
+      <span class="hljs-keyword">self</span>.x -= <span class="hljs-number">12</span>
+    <span class="hljs-keyword">end</span>
+    <span class="hljs-keyword">if</span> Input.key_down?(K_RIGHT) &amp;&amp; <span class="hljs-keyword">self</span>.x &lt; (Window.width - Image[<span class="hljs-symbol">:player</span>].width)
+      <span class="hljs-keyword">self</span>.x += <span class="hljs-number">12</span>
+    <span class="hljs-keyword">end</span>
+    <span class="hljs-keyword">if</span> Input.key_down?(K_UP) &amp;&amp; <span class="hljs-keyword">self</span>.y &gt; <span class="hljs-number">0</span>
+      <span class="hljs-keyword">self</span>.y -= <span class="hljs-number">8</span>
+    <span class="hljs-keyword">end</span>
+    <span class="hljs-keyword">if</span> Input.key_down?(K_DOWN)  &amp;&amp; <span class="hljs-keyword">self</span>.y &lt; (Window.height - Image[<span class="hljs-symbol">:player</span>].height)
+      <span class="hljs-keyword">self</span>.y += <span class="hljs-number">8</span>
+    <span class="hljs-keyword">end</span>
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</div></code></pre>
+<p>最後に作成したPlayerを画面に描写しましょう。main.rbのプレイ中のシーンを以下のように変更します。</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">when</span> <span class="hljs-symbol">:playing</span>
+  @player.update
+  @player.draw
+
+  @items.update
+  @items.draw
+</div></code></pre>
+<p>これで画面上にプレイヤーが表示されました。またキーボードでプレイヤーを動かすことができます。</p>
+<p><br><br><br><br><br><br><br><br>
+イラスト追加予定
+<br><br><br><br><br><br><br><br></p>
+<h3 id="36-%E5%BD%93%E3%81%9F%E3%82%8A%E5%88%A4%E5%AE%9A%E3%81%AE%E8%A8%AD%E5%AE%9A">3.6 当たり判定の設定</h3>
+<p>次に当たり判定を実装しましょう。当たり判定は、Spriteクラスに用意されているので簡単に実装できます。<br>
+まず、Playerクラスに以下の記述を追加し、当たり判定の範囲を指定します。</p>
+<pre class="hljs"><code><div><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Player</span> &lt; Sprite</span>
+  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">initialize</span></span>
+    〜省略〜
+    <span class="hljs-comment"># 当たり判定を円の実装（X軸の中心, Y軸の中心, 半径）</span>
+    <span class="hljs-keyword">self</span>.collision = [image.width / <span class="hljs-number">2</span>, image.height / <span class="hljs-number">2</span>, <span class="hljs-number">16</span>]
+  <span class="hljs-keyword">end</span>
+</div></code></pre>
+<p>Ramen, Soba, Udonクラスのinittializeは以下のように設定します。</p>
+<pre class="hljs"><code><div>  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">initialize</span></span>
+    <span class="hljs-keyword">super</span>(Image[<span class="hljs-symbol">:soba</span>])
+    <span class="hljs-keyword">self</span>.collision = [image.width / <span class="hljs-number">2</span>, image.height / <span class="hljs-number">2</span>, <span class="hljs-number">56</span>]
+  <span class="hljs-keyword">end</span>
+</div></code></pre>
+<p>次にスコアを保存するためにゲーム情報を保持するハッシュを編集します。</p>
+<pre class="hljs"><code><div>GAME_INFO = {
+  <span class="hljs-symbol">scene:</span> <span class="hljs-symbol">:title</span>,
+  <span class="hljs-symbol">score:</span> <span class="hljs-number">0</span>
+}
+</div></code></pre>
+<p>続いて、衝突時に鳴らす効果音を登録しましょう。画像の登録のすぐ下あたりに以下の記述を追加してください。</p>
+<pre class="hljs"><code><div>Sound.register(<span class="hljs-symbol">:success</span>, <span class="hljs-string">'sounds/success.wav'</span>)
+Sound.register(<span class="hljs-symbol">:failure</span>, <span class="hljs-string">'sounds/failure.wav'</span>)
+</div></code></pre>
+<p>最後にhitメソッドを実装します。Ramenクラスは以下のようにします。</p>
+<pre class="hljs"><code><div>  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">hit</span></span>
+    Sound[<span class="hljs-symbol">:success</span>].play      <span class="hljs-comment"># 効果音を鳴らす</span>
+    <span class="hljs-keyword">self</span>.vanish               <span class="hljs-comment"># 画面から除去するためにvanishメソッドを呼ぶ</span>
+    GAME_INFO[<span class="hljs-symbol">:score</span>] += <span class="hljs-number">1</span>    <span class="hljs-comment"># スコアをプラス</span>
+  <span class="hljs-keyword">end</span>
+</div></code></pre>
+<p>SobaクラスとUdonクラスは以下のようにします。</p>
+<pre class="hljs"><code><div>  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">hit</span></span>
+    Sound[<span class="hljs-symbol">:failure</span>].play            <span class="hljs-comment"># 効果音を鳴らす</span>
+    <span class="hljs-keyword">self</span>.vanish                     <span class="hljs-comment"># 画面から除去するためにvanishメソッドを呼ぶ</span>
+    GAME_INFO[<span class="hljs-symbol">:scene</span>] = <span class="hljs-symbol">:game_over</span>  <span class="hljs-comment"># シーンの切り替え</span>
+  <span class="hljs-keyword">end</span>
+</div></code></pre>
+<p>最後にItemsクラスを編集し、当たり判定を実行させるようにしましょう。</p>
+<pre class="hljs"><code><div>  <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">update</span><span class="hljs-params">(player)</span></span>                    <span class="hljs-comment"># playerを引数にとるように修正</span>
+    @items.each { <span class="hljs-params">|item|</span> item.update }  <span class="hljs-comment"># 各スプライトのupdateメソッドを呼ぶ</span>
+    Sprite.check(player, @items)        <span class="hljs-comment"># ここで当たり判定を実行。当たっていた場合はhitメソッドが呼ばれる。</span>
+    Sprite.clean(@items)                <span class="hljs-comment"># vanishしたスプライトを配列から取り除く</span>
+    〜省略〜
+</div></code></pre>
+<p>updateメソッドを更新したので、引数を追加しておきましょう。</p>
+<pre class="hljs"><code><div>〜省略〜
+<span class="hljs-keyword">when</span> <span class="hljs-symbol">:playing</span>
+  @items.update(@player)
+</div></code></pre>
+<h3 id="37-%E3%82%B2%E3%83%BC%E3%83%A0%E3%82%AA%E3%83%BC%E3%83%90%E3%83%BC%E7%94%BB%E9%9D%A2%E3%81%AE%E4%BD%9C%E6%88%90">3.7 ゲームオーバー画面の作成</h3>
+<p>現在、うどんかそばに当たってしまうと真っ黒な画面に切り替わります。ここにゲームオーバー画面を作成していきましょう。</p>
+<p>それではまず、画像を登録しましょう</p>
+<pre class="hljs"><code><div>Image.register(<span class="hljs-symbol">:result</span>, <span class="hljs-string">'images/result.png'</span>)
+</div></code></pre>
+<p>続いて登録した画像を描写します。</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">when</span> <span class="hljs-symbol">:game_over</span>
+  Window.draw(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, Image[<span class="hljs-symbol">:result</span>])
+</div></code></pre>
+<p>次にリザルト画面で表示させるためのおすすめのラーメン屋リストを作成しましょう。GAME_INFOの下に以下の2次元配列を定義します。</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># おすすめラーメン店リスト</span>
+SHOP_LIST = [
+  [<span class="hljs-string">"中野"</span>, <span class="hljs-string">"二代目えん寺"</span>],[<span class="hljs-string">"歌舞伎町"</span>, <span class="hljs-string">"ラーメン二郎"</span>],[<span class="hljs-string">"小滝橋通"</span>, <span class="hljs-string">"龍の家"</span>],
+  [<span class="hljs-string">"秋葉原"</span>, <span class="hljs-string">"MAZERU"</span>],[<span class="hljs-string">"荻窪"</span>, <span class="hljs-string">"暁月"</span>],[<span class="hljs-string">"荻窪"</span>, <span class="hljs-string">"味噌っ子ふっく"</span>],
+  [<span class="hljs-string">"新宿"</span>, <span class="hljs-string">"野郎商店"</span>],[<span class="hljs-string">"新宿"</span>, <span class="hljs-string">"三田製麺所"</span>],[<span class="hljs-string">"吉祥寺"</span>, <span class="hljs-string">"鷹神"</span>],
+  [<span class="hljs-string">"渋谷"</span>, <span class="hljs-string">"ちばから"</span>],[<span class="hljs-string">"目黒"</span>, <span class="hljs-string">"ラーメン二郎"</span>],[<span class="hljs-string">"新宿"</span>, <span class="hljs-string">"蒙古タンメン中本"</span>],
+  [<span class="hljs-string">"神田"</span>, <span class="hljs-string">"つじ田"</span>],[<span class="hljs-string">"御徒町"</span>, <span class="hljs-string">"なんつっ亭"</span>],[<span class="hljs-string">"中野"</span>, <span class="hljs-string">"バラそば屋"</span>]
+]
+</div></code></pre>
+<p>次に、おすすめのラーメン屋をランダムに設定するために以下を追加します。</p>
+<pre class="hljs"><code><div>Window.load_resources <span class="hljs-keyword">do</span>
+  @items = Items.new
+  @player = Player.new
+  @ramen_shop = SHOP_LIST.sample  <span class="hljs-comment"># おすすめラーメン屋の設定</span>
+  〜省略〜
+</div></code></pre>
+<p>最後にゲームオーバー画面に文字列を追加しましょう。</p>
+<pre class="hljs"><code><div>  <span class="hljs-keyword">when</span> <span class="hljs-symbol">:game_over</span>
+    Window.draw(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, Image[<span class="hljs-symbol">:result</span>])  <span class="hljs-comment"># 画像の描写</span>
+    Window.draw_font(<span class="hljs-number">120</span>, <span class="hljs-number">610</span>, <span class="hljs-string">"今回、お前が食べたラーメンは・・・ <span class="hljs-subst">#{GAME_INFO[<span class="hljs-symbol">:score</span>]}</span> 杯だ。"</span>, Font.default, <span class="hljs-symbol">color:</span> [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>])
+    Window.draw_font(<span class="hljs-number">120</span>, <span class="hljs-number">650</span>, <span class="hljs-string">"まだ食べ足りないだと？よし、俺のおすすめのラーメン屋を教えてやる。"</span>, Font.default, <span class="hljs-symbol">color:</span> [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>])
+    Window.draw_font(<span class="hljs-number">120</span>, <span class="hljs-number">690</span>, <span class="hljs-string">"お前におすすめのラーメン屋は、<span class="hljs-subst">#{@ramen_shop[<span class="hljs-number">0</span>]}</span>にある「<span class="hljs-subst">#{@ramen_shop[<span class="hljs-number">1</span>]}</span>」だ。"</span>, Font.default, <span class="hljs-symbol">color:</span> [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>])
+    Window.draw_font(<span class="hljs-number">120</span>, <span class="hljs-number">730</span>, <span class="hljs-string">"スペースキーを押せばもう1度ゲームにチャレンジできるぜ。"</span>, Font.default, <span class="hljs-symbol">color:</span> [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>])
+</div></code></pre>
+<p>最後にスペースキーを押した際にゲームをリスタートさせるので、各種変数の初期化を行います。</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># スペースキーが押されたらシーンを変える</span>
+<span class="hljs-keyword">if</span> Input.key_push?(K_SPACE)
+  @items = Items.new
+  @player = Player.new
+  @ramen_shop = SHOP_LIST.sample
+  GAME_INFO[<span class="hljs-symbol">:score</span>] = <span class="hljs-number">0</span>
+  GAME_INFO[<span class="hljs-symbol">:scene</span>] = <span class="hljs-symbol">:playing</span>
+</div></code></pre>
+<p>こちらが完成したゲームオーバー画面になります。
+<img src="/Users/kyosuke/Desktop/pictures/04_result.png" alt="init.png"></p>
+<h3 id="38-bgm%E3%81%AE%E8%BF%BD%E5%8A%A0">3.8 BGMの追加</h3>
+<p>今の状態だとアイテムに触れた時した音がないので少し寂しいですね。続いてBGMを追加しましょう。まずは音楽を登録しましょう。</p>
+<pre class="hljs"><code><div>Sound.register(<span class="hljs-symbol">:playing</span>, <span class="hljs-string">'sounds/playing.wav'</span>)
+</div></code></pre>
+<p>次に、タイトル画面もしくはゲームオーバー画面からプレイ中画面に移動するタイミングでBGMをスタートし、そばかうどんと当たったタイミングでおBGMを停止するという風に設定します。今回はコードは省略しますので、どこに何を追加するべきか考えて追加してみてください！</p>
+<h2 id="4-%E6%9C%80%E5%BE%8C%E3%81%AB">4. 最後に</h2>
+<p>簡単ではありましたが、以上で完成となります。あ、追加機能としてスコアを表示とかできればもっと楽しいゲームになりそうですね。また、かなり汚いコードとなっているので、共通化したりなどリファクタリングの余地はかなりあると思います。もし時間がある方はリファクタリングをしてみてもいいですね。そして最後にこれを言うのもおかしな話ですが、おそらく今後、Rubyでブラウザゲームを作ることはほぼないでしょう。ではなぜ今回こんな本を書いたのかというと、私がRubyを好きなので、Rubyを使って何か面白いものを作れないかなと調べた結果、ブラウザゲームが作れるなら作ってみようと思っただけの完全な自己満です。ただ、たまにはこういった息抜き的な勉強も楽しいのではないなかと思います。いかがでしたでしょうか。拙い文章ではありましたが、読んでいただきありがとうございました。</p>
+
+</body>
+</html>

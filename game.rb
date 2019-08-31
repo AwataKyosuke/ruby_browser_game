@@ -56,8 +56,6 @@ class Game
       # プレイ画面
       when :playing
 
-        Window.draw_font(100, 100, "#{Time.now - @start_time}", Font.default)
-
         @player.update
         @items.update(@player)
 
