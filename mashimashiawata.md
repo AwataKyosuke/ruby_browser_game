@@ -6,11 +6,15 @@
 ### 2.1 Rubyのインストール
 今回のゲームはRubyで作成するため、ネットの記事を参考にRubyをインストールしてください。<br>
 
+<br>
+
 ### 2.2 DxOpalのインストール
 次に、今回利用するライブラリをインストールしましょう。Rubyのインストールが完了している状況で、ターミナルで以下のコマンドを実行してください。<br>
 ``` ruby
 $ gem install dxopal
 ```
+
+<br>
 
 ### 2.3 作業ディレクトリの作成
 以下のコマンドで作業ディレクトリを作成し、作業ディレクトリに移動しましょう。<br>
@@ -18,9 +22,11 @@ $ gem install dxopal
 $ mkdir ruby_game
 $ cd ruby_game
 ```
+<br>
 
 ### 2.4 必要ファイルのダウンロード
-今回のゲームに必要な画像ファイルと音声ファイルを[http://www.00000000000.co.jp/sdafa](http://www.00000000000.co.jp/sdafa)からダウンロードしておいてください。また、完成形のソースコードもこちらに入れておりますので、必要な方はご確認ください。<br>
+今回のゲームに必要な画像ファイルと音声ファイルを[https://12.gigafile.nu/1031-dc993e8c4ba5a5d3966366fd050055584](https://12.gigafile.nu/1031-dc993e8c4ba5a5d3966366fd050055584)からダウンロードしておいてください。ダウンロードの期限は10月31日まで、ダウンロードキーは0922です。また、完成形のソースコードもこちらに入れておりますので、必要な方はご確認ください。QRコードからもアクセスできます。<br>
+<img src="./pictures/06_QR.png" width=10%>
 
 ## 3.  実装
 まずは、雛形を作成しブラウザ上で動作することを確認しましょう。<br>
@@ -39,13 +45,16 @@ $ dxopal init
 ``` ruby
 $ dxopal server
 ```
+<div class="page"/>
+
+<br>
 
 最後にブラウザで以下にアクセスし動作を確認してください。<br>
 ``` ruby
 localhost:7521/index.html
 ```
 真っ黒の画面の橋に「Hello!」と表示されていれば成功です。<br>
-最後に先ほどダウンロードしたフォルダ内の `images/` と `sounds/` を作業ディレクトリにコピーしておいてください。<br>
+最後に先ほどダウンロードしたフォルダ内の `images/` と `sounds/` を作業ディレクトリにコピーしておいてください。<br><br>
 
 ### 3.2 タイトル画面の作成
 それでは、タイトル画面の作成に移ります。背景画像とのれんの画像と文字列を描写します。main.rbを以下のように変更します。
@@ -67,8 +76,16 @@ Window.load_resources do
   end
 end
 ```
+
+<br>
 ここまで終わった時点で画面は以下のようになっていれば大丈夫です。
-![init.png](/Users/kyosuke/Desktop/pictures/03_title.png)
+<br>
+
+<img src="./pictures/03_title.png" width=70%>
+
+<div class="page"/>
+
+<br>
 
 ### 3.3 シーン分けの設定
 次にゲームのシーンを設定します。今回は「タイトル」「プレイ中」「ゲームオーバー」と3種類のシーンを設定することにしましょう。また「タイトル」から「プレイ中」と「ゲームオーバー」から「プレイ中」へはスペースキーを押すことでシーン移動ができるよう設定します。main.rbを以下のように変更します。
@@ -110,6 +127,8 @@ Window.load_resources do
 end
 ```
 
+<br>
+
 ### 3.4 アイテムの表示
 続いて、プレイ中に上から落下してくるアイテムを表示します。まずはこれまでと同様に画像の登録を行います。以下のコードを追記してください。
 ``` ruby
@@ -117,6 +136,9 @@ Image.register(:ramen, 'images/ra-men.png')
 Image.register(:udon, 'images/udon.png')
 Image.register(:soba, 'images/soba.png')
 ```
+
+<br>
+
 次にアイテムを表示させるためのクラスを作成します。DxRubyにはSpriteクラスが用意されているため、こちらを継承しておくことで後ほど当たり判定などが簡単に実装できるようになります。<br>
 では早速Itemクラスを作成しましょう。
 ``` ruby
@@ -136,7 +158,13 @@ class Item < Sprite
   end
 end
 ```
+
+<div class="page"/>
+
+<br>
+
 アイテムを表すItemクラスを作成したら、Itemクラスを継承した各アイテムクラスを作成します。具体的には「ラーメン」「うどん」「そば」が各アイテムになります。
+
 ``` ruby
 class Ramen < Item
   def initialize
@@ -144,6 +172,9 @@ class Ramen < Item
   end
 end
 ```
+
+<br>
+
 ``` ruby
 class Soba < Item
   def initialize
@@ -151,6 +182,9 @@ class Soba < Item
   end
 end
 ```
+
+<br>
+
 ``` ruby
 class Udon < Item
   def initialize
@@ -158,7 +192,13 @@ class Udon < Item
   end
 end
 ```
+
+<br>
+
 最後に、これらのアイテムを管理するためのItemsクラスを作成します。
+
+<br>
+
 ``` ruby
 # アイテムを管理するクラス
 class Items
@@ -194,7 +234,12 @@ class Items
   end
 end
 ```
+
+<div class="page"/>
+<br>
+
 main.rbは以下のようになります。
+
 ``` ruby
 require 'dxopal'
 include DXOpal
@@ -248,11 +293,16 @@ Window.load_resources do
 end
 ```
 
+<br>
+
 ### 3.5 プレイヤーの表示
 続いて、アイテムをゲットするプレイヤーを表示させます。まずは画像を登録しましょう。
 ``` ruby
 Image.register(:player, 'images/player.png')
 ```
+
+<div class="page"/>
+
 画像の登録が完了したらPlayerクラスを作成します。PlayerクラスはItemsクラスの下に追記してください。
 ``` ruby
 class Player < Sprite
@@ -291,9 +341,11 @@ when :playing
 ```
 これで画面上にプレイヤーが表示されました。またキーボードでプレイヤーを動かすことができます。
 
-<br><br><br><br><br><br><br><br>
-イラスト追加予定
-<br><br><br><br><br><br><br><br>
+<img src="./pictures/04_playing.png" width=70%>
+
+<div class="page"/>
+
+<br>
 
 ### 3.6 当たり判定の設定
 次に当たり判定を実装しましょう。当たり判定は、Spriteクラスに用意されているので簡単に実装できます。<br>
@@ -353,6 +405,11 @@ SobaクラスとUdonクラスは以下のようにします。
     Sprite.clean(@items)                # vanishしたスプライトを配列から取り除く
     〜省略〜
 ```
+
+<div class="page"/>
+
+<br>
+
 updateメソッドを更新したので、引数を追加しておきましょう。
 ``` ruby
 〜省略〜
@@ -360,19 +417,26 @@ when :playing
   @items.update(@player)
 ```
 
+<br>
+
 ### 3.7 ゲームオーバー画面の作成
-現在、うどんかそばに当たってしまうと真っ黒な画面に切り替わります。ここにゲームオーバー画面を作成していきましょう。
+現在、うどんかそばに当たってしまうと真っ黒な画面に切り替わります。このままでは少しゲームとして味気ないので、ここにゲームオーバー画面を作成していきましょう。具体的には、今回食べることができたラーメンの数と、おすすめのラーメン屋を表示します。
 
 それではまず、画像を登録しましょう
+
 ``` ruby
 Image.register(:result, 'images/result.png')
 ```
+
 続いて登録した画像を描写します。
+
 ``` ruby
 when :game_over
   Window.draw(0, 0, Image[:result])
 ```
-次にリザルト画面で表示させるためのおすすめのラーメン屋リストを作成しましょう。GAME_INFOの下に以下の2次元配列を定義します。
+
+次にリザルト画面で表示させるためのおすすめのラーメン屋リストを作成しましょう。GAME_INFOの下に以下の2次元配列を定義します。ただの2次元配列なので、表示数を増やしたい場合はこのリストに追加していきましょう。
+
 ``` ruby
 # おすすめラーメン店リスト
 SHOP_LIST = [
@@ -383,7 +447,9 @@ SHOP_LIST = [
   ["神田", "つじ田"],["御徒町", "なんつっ亭"],["中野", "バラそば屋"]
 ]
 ```
+
 次に、おすすめのラーメン屋をランダムに設定するために以下を追加します。
+
 ``` ruby
 Window.load_resources do
   @items = Items.new
@@ -391,7 +457,9 @@ Window.load_resources do
   @ramen_shop = SHOP_LIST.sample  # おすすめラーメン屋の設定
   〜省略〜
 ```
+
 最後にゲームオーバー画面に文字列を追加しましょう。
+
 ``` ruby
   when :game_over
     Window.draw(0, 0, Image[:result])  # 画像の描写
@@ -400,7 +468,9 @@ Window.load_resources do
     Window.draw_font(120, 690, "お前におすすめのラーメン屋は、#{@ramen_shop[0]}にある「#{@ramen_shop[1]}」だ。", Font.default, color: [0, 0, 0])
     Window.draw_font(120, 730, "スペースキーを押せばもう1度ゲームにチャレンジできるぜ。", Font.default, color: [0, 0, 0])
 ```
-最後にスペースキーを押した際にゲームをリスタートさせるので、各種変数の初期化を行います。
+
+最後にスペースキーを押した際にゲームをリスタートさせるので、各種変数の初期化を行います。この初期化は他でも同じ処理を書いているので、メソッド化してもいいですね。
+
 ``` ruby
 # スペースキーが押されたらシーンを変える
 if Input.key_push?(K_SPACE)
@@ -410,8 +480,10 @@ if Input.key_push?(K_SPACE)
   GAME_INFO[:score] = 0
   GAME_INFO[:scene] = :playing
 ```
+<br>
 こちらが完成したゲームオーバー画面になります。
-![init.png](/Users/kyosuke/Desktop/pictures/04_result.png)
+
+<img src="./pictures/05_result.png" width=70%>
 
 ### 3.8 BGMの追加
 今の状態だとアイテムに触れた時した音がないので少し寂しいですね。続いてBGMを追加しましょう。まずは音楽を登録しましょう。
@@ -422,3 +494,6 @@ Sound.register(:playing, 'sounds/playing.wav')
 
 ## 4. 最後に
 簡単ではありましたが、以上で完成となります。あ、追加機能としてスコアを表示とかできればもっと楽しいゲームになりそうですね。また、かなり汚いコードとなっているので、共通化したりなどリファクタリングの余地はかなりあると思います。もし時間がある方はリファクタリングをしてみてもいいですね。そして最後にこれを言うのもおかしな話ですが、おそらく今後、Rubyでブラウザゲームを作ることはほぼないでしょう。ではなぜ今回こんな本を書いたのかというと、私がRubyを好きなので、Rubyを使って何か面白いものを作れないかなと調べた結果、ブラウザゲームが作れるなら作ってみようと思っただけの完全な自己満です。ただ、たまにはこういった息抜き的な勉強も楽しいのではないなかと思います。いかがでしたでしょうか。拙い文章ではありましたが、読んでいただきありがとうございました。
+
+## 5.参考にしたサイト
+[Rubyで始めるゲームプログラミング -DxOpal編-](https://magazine.rubyist.net/articles/0057/0057-GameProgramingWithDXOpal)
