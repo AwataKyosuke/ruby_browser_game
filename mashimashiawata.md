@@ -275,16 +275,7 @@ class Items
 end
 
 Window.load_resources do
-
-  @items = Items.new
-
   Window.loop do
-
-    〜省略〜
-
-    when :playing
-      @items.update
-      @items.draw
 
     〜省略〜
 
@@ -330,14 +321,20 @@ class Player < Sprite
   end
 end
 ```
-最後に作成したPlayerを画面に描写しましょう。main.rbのプレイ中のシーンを以下のように変更します。
+最後に作成したPlayerとItemを画面に描写しましょう。各インスタンスを生成し、main.rbのプレイ中のシーンを以下のように変更します。
 ``` ruby
-when :playing
-  @player.update
-  @player.draw
+Window.load_resources do
+  @player = Player.new
+  @items = Items.new
 
-  @items.update
-  @items.draw
+  〜省略〜
+
+  when :playing
+    @player.update
+    @player.draw
+
+    @items.update
+    @items.draw
 ```
 これで画面上にプレイヤーが表示されました。またキーボードでプレイヤーを動かすことができます。
 
