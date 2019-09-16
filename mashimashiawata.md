@@ -29,10 +29,8 @@ $ cd ruby_game
 <img src="./pictures/06_QR.png" width=10%>
 
 ## 3.  実装
-まずは、雛形を作成しブラウザ上で動作することを確認しましょう。<br>
-
 ### 3.1 雛形の作成
-初めに以下のコマンドを作業ディレクトリで実行し、雛形を作成します。<br>
+まずは、雛形を作成しブラウザ上で動作することを確認しましょう。以下のコマンドを作業ディレクトリで実行し、雛形を作成します。<br>
 ``` ruby
 $ dxopal init
 ```
@@ -136,8 +134,6 @@ Image.register(:ramen, 'images/ra-men.png')
 Image.register(:udon, 'images/udon.png')
 Image.register(:soba, 'images/soba.png')
 ```
-
-<br>
 
 次にアイテムを表示させるためのクラスを作成します。DxRubyにはSpriteクラスが用意されているため、こちらを継承しておくことで後ほど当たり判定などが簡単に実装できるようになります。<br>
 では早速Itemクラスを作成しましょう。
@@ -465,6 +461,8 @@ Window.load_resources do
     Window.draw_font(120, 690, "お前におすすめのラーメン屋は、#{@ramen_shop[0]}にある「#{@ramen_shop[1]}」だ。", Font.default, color: [0, 0, 0])
     Window.draw_font(120, 730, "スペースキーを押せばもう1度ゲームにチャレンジできるぜ。", Font.default, color: [0, 0, 0])
 ```
+
+<div class="page"/>
 
 最後にスペースキーを押した際にゲームをリスタートさせるので、各種変数の初期化を行います。この初期化は他でも同じ処理を書いているので、メソッド化してもいいですね。
 
